@@ -183,7 +183,7 @@ function install_controller()
 	subnet=`echo $host|awk -F. '{print $1"."$2"."$3".%"}'`
         pass=$2
 	conf=/etc/nova/nova.conf
-	echo "CREATE DATABASE nova;GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY '$pass';GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY '$pass';FLUSH PRIVILEGES;"|mysql -uroot -p$pass
+	echo "CREATE DATABASE nova;GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY '$pass';GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'$host' IDENTIFIED BY '$pass';GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY '$pass';FLUSH PRIVILEGES;"|mysql -uroot -p$pass
 	apt-get install -y  nova-novncproxy novnc nova-api nova-ajax-console-proxy nova-cert nova-consoleauth nova-doc nova-scheduler
 	cp ./conf/nova.conf /etc/nova/
 	edit_nova_conf $host $pass $host
