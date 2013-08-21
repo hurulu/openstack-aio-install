@@ -120,7 +120,7 @@ function install_glance()
         fi
         host=$1
         pass=$2
-	echo "CREATE DATABASE glance;GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY '$pass';CREATE DATABASE glance;GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY '$pass';FLUSH PRIVILEGES;"|mysql -uroot -p$pass
+	echo "CREATE DATABASE glance;GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY '$pass';GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY '$pass';FLUSH PRIVILEGES;"|mysql -uroot -p$pass
 	apt-get install -y glance glance-api glance-registry python-glanceclient glance-common
 	for i in /etc/glance/glance-api.conf /etc/glance/glance-registry.conf
 	do
