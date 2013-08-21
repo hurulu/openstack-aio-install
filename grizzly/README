@@ -1,0 +1,10 @@
+#Writen by Lei
+
+This script is to install Openstack(grizzly) in All in One mode.Note that cinder, quantum and swift are not installed.
+
+Simply run:
+./install.sh 
+
+And then visit http://yourip/ with
+user name: admin
+password : password
