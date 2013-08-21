@@ -196,6 +196,8 @@ function install_controller()
 function install_horizon()
 {
 	apt-get install -y memcached libapache2-mod-wsgi openstack-dashboard
+	echo "RedirectMatch permanent ^/$ /horizon/" >>/etc/apache2/conf.d/openstack-dashboard.conf
+	service apache2 restart
 }
 
 function compute_control()
